@@ -9,8 +9,12 @@ def home():
     else:
         return "Você está acessando via outro verbo!"
 
-# @app.route("/", methods=["POST"])   
-# def sobre():
-#     return "POST"
+@app.errorhandler(404)
+def not_found(error):
+    return render_template("error.html")
+
+@app.errorhandler(405)
+def not(error):
+    return "Esse verbo não existe!"
 
 app.run(port=8080, debug=True)    
