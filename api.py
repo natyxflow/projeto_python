@@ -9,12 +9,13 @@ def home():
     else:
         return "Você está acessando via outro verbo!"
 
+@app.route("/<int:id>")
+def Home_id(id):
+    return str(id + 1)
+
 @app.errorhandler(404)
 def not_found(error):
     return render_template("error.html")
 
-@app.errorhandler(405)
-def not(error):
-    return "Esse verbo não existe!"
 
 app.run(port=8080, debug=True)    
